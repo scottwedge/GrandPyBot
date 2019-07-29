@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>PyBot</title>
+        <link rel="icon" href='{{ url_for("static",filename = "img/pybot.png")}}'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <style>
+           @import url(https://fonts.googleapis.com/css?family=Bitter|Slabo+27px);
+            *{
+                margin:0;
+            }
+            #cchild1{
+                border: 1px solid grey;
+                width: 100%;
+                height: 60vh;
+                overflow: hidden;
+                overflow-y: scroll;
+            }
+            body{
+                background: url('static/img/bbg.png') center no-repeat ;
+            }
+           
+       </style>
+    </head>
+
+    <body>
+    
+        <div class = "container">
+            <header>
+                <!-- Image and text -->
+                <nav class="navbar navbar-dark bg-dark" >
+                    <a class="navbar-brand" href="#">
+                    <img src='{{ url_for("static",filename = "img/pybot.png")}}' id = "pybot" width="30" height="30" class="d-inline-block align-top"/>
+                    GRAND_PYBOT
+                    </a>
+                </nav>
+            </header>
+        
+            <div class="row mt-4 ">
+                <div class="col-xs-12 col-md-6 offset-md-3">
+                    <form method="POST"  action="/" id="chatForm">
+                        <div class="form-group">
+                            <input type="text" name="ask" id = "searchbar" class="form-control" placeholder="Des questions...?"  maxlength='150' required/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id = "searchButton" class="btn btn-dark btn-block">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+                <div id = "cchild1" class="mb-4 col-12 ">
+                    
+                </div>
+            </div>    
+
+            <footer class="row bg-dark p-2">
+                <div id = "fchild1" class="col-xs-12 col-sm-12  col-md-6 text-center text-white"> 
+                    <p>&#169;All Right reserved</p>
+                    <p>Boukroun Younes</p>
+                </div>
+                <div id = "fchild2" class="col-xs-12 col-sm-12 col-md-6 text-right"> 
+                    <a href="https://github.com/Lyounessi" target = "_blank">
+                        <img src='{{ url_for("static",filename = "img/git.png")}}' height="40" width="40"/>
+                    </a> 
+                    <a href="https://plus.google.com/u/0/109776314443043096266" target = "_blank">
+                        <img src= '{{ url_for("static",filename = "img/gplus.png")}}' height="40" width="40"/>
+                    </a>
+                </div>
+            </footer>
+            
+        </div>
+
+</body>
+
+  
+</html> 
