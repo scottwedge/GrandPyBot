@@ -10,10 +10,18 @@ class bot():
     Class to make the bots logics, and methods to communicate 
     with the front end querys.
     """
-    def messageBot(self, statu):
+    def __init__(self):
+        """
+        Load lists contents as filters helps
+        """
         self.welcoming = ['bonjour', 'Vraiment', 'non', 'Oui']
         self.successResp = ['et voila', 'ui', 'l\'adresse est la suivante']
         self.faildResp = ['Malheuresement Pas d\'histoire']
+
+
+
+    def messageBot(self, statu):
+        
         self.statu = statu
         self.msg = ''
         if self.statu == 'w':

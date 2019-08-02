@@ -1,6 +1,5 @@
 import unittest
-from app import bot as bt
-
+from app import app
 
 
 #Starting with py bot message list test
@@ -14,11 +13,11 @@ class botTests(unittest.TestCase):
         """
         self.success = bt.successResp
         self.faild = bt.faildResp
-        self.wlc = bot.welcoming
+        self.wlc = welcoming
         
-        self.assertIn(bt.messageBot('s'), self.success)
-        self.assertIn(bt.messageBot('f'), self.faild)
-        self.assertIn(bt.messageBot('w'), self.wlc)
+        self.assertIn(messageBot('s'), self.success)
+        self.assertIn(messageBot('f'), self.faild)
+        self.assertIn(messageBot('w'), self.wlc)
 
 
             
