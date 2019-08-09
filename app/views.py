@@ -1,10 +1,23 @@
-from flask import Flask,  render_template
+from flask import Flask,  render_template, request, jsonify
+from app import bot
+
 
 app = Flask(__name__)
 
-@app.route('/',  methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
 
+
+
+@app.route('/', methods = ["GET","POST"])
+def result():
+
+    if request.method == 'POST':
+        question = request.json
+        query = bot.Bot(question)
+        
+        
+        return query.stopWd()
+
+    else:
+        return render_template('index.html')
 if __name__ == "__main__":
     app.run()

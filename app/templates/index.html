@@ -43,7 +43,7 @@
                 <div class="col-xs-12 col-md-6 offset-md-3">
                     <form method="POST"  action="/" id="chatForm">
                         <div class="form-group">
-                            <input type="text"  id = "searchbar" class="inputSearch form-control" placeholder="Des questions...?"  maxlength='150' required/>
+                            <input type="text"  formmethod="post" id = "searchbar" name='search' class="inputSearch form-control" placeholder="Des questions...?"  maxlength='150' required autofocus/>
                         </div>
                         <div class="form-group">
                             <button type="submit" id = "searchButton" class="btn btn-dark btn-block">Envoyer</button>
@@ -71,7 +71,11 @@
             </footer>
             
         </div>
-
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
         <script src="{{ url_for('static', filename='scripts/funcs.js')}}"></script>
         <script src="{{ url_for('static', filename='scripts/ui.js')}}"></script>
 
