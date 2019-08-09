@@ -7,6 +7,8 @@ const questionVal = document.getElementById('searchbar');
 form.addEventListener('submit', e => {
     e.preventDefault();
     const question = questionVal.value.trim();
+    // const base = {{ query }};
+    // console.log(base);
 
     $.ajax({
         type: "POST",
