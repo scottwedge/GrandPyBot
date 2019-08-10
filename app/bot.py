@@ -44,8 +44,37 @@ class Bot:
         for elt in response:
             if elt not in self.splitStp():
                 cleanWords.append(elt)
-        print(cleanWords)
         return(' '.join(cleanWords))
+
+    def MediaWiki(self):
+        """A Moethod to get a storie about the place from mediawiki"""
+        
+
+        base_url = "http://fr.wikipedia.org/w/api.php"
+        params_url = {"action": "opensearch",
+                  "search": self.stopWd(),
+                  "limit": "1",
+                  "namespace": "0",
+                  "format": "json"}
+        
+        self.ResultUrl = requests.get(url=base_url, params=params_url)
+        #print(self.ResultUrl.url)
+        try:
+            answer = self.ResultUrl.json()[2][0]
+            return  answer
+        except:
+            error = 'Error'
+            return error
+       
+
+
+    def GooglMapFrame(self):
+        """Geting the localisation on the map"""
+        self.MediaWiki()
+        
+        base_url = "https://www.google.com/maps/search/?api=1&query="+self.stopWd()
+        print(base_url)
+        
          
         
 

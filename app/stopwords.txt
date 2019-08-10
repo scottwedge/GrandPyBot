@@ -167,6 +167,8 @@ peut
 plupart
 pour
 pourquoi
+pybot
+grand_pybot
 qu
 quand
 que

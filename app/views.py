@@ -15,7 +15,7 @@ def result():
         query = bot.Bot(question)
         
         
-        return query.stopWd()
+        return query.MediaWiki(), query.GooglMapFrame()
 
     else:
         return render_template('index.html')
