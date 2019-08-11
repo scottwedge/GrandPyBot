@@ -22,13 +22,23 @@
             body{
                 background: url('static/img/bbg.png') center no-repeat ;
             }
+            .wait{
+                z-index: 1;
+                position: fixed;
+                top: 40%;
+                left: 42%;
+                width: 200px;
+                height: 200px;
+                margin-top: 0%; 
+
+            }
            
        </style>
     </head>
 
     <body>
     
-        <div class = "container">
+        <div id = "container" class = "container">
             <header>
                 <!-- Image and text -->
                 <nav class="navbar navbar-dark bg-dark" >
@@ -51,7 +61,7 @@
                     </form>
                 </div>
                 <div id = "cchild1" class="mb-4 col-12 ">
-                    
+                    <img src='{{ url_for("static",filename = "img/wait.gif") }}' class="wait" alt="">
                 </div>
             </div>    
 
@@ -71,13 +81,14 @@
             </footer>
             
         </div>
-        <script
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous">
-        </script>
+       
         <script src="{{ url_for('static', filename='scripts/funcs.js')}}"></script>
         <script src="{{ url_for('static', filename='scripts/ui.js')}}"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+        </script>
 
 </body>
 

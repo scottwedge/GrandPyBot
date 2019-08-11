@@ -47,7 +47,9 @@ class Bot:
         return(' '.join(cleanWords))
 
     def MediaWiki(self):
-        """A Moethod to get a storie about the place from mediawiki"""
+        """A Moethod to get a storie about the place from mediawiki
+         and a explnation if the response dont exist
+        """
         
 
         base_url = "http://fr.wikipedia.org/w/api.php"
@@ -63,14 +65,14 @@ class Bot:
             answer = self.ResultUrl.json()[2][0]
             return  answer
         except:
-            error = 'Error'
+            error = "Désolé mon amis J'ai peut etre pas compris ta question ou, l'endroit que tu chere na aucune histoire :'("
             return error
        
 
 
     def GooglMapFrame(self):
         """Geting the localisation on the map"""
-        self.MediaWiki()
+        
         
         base_url = "https://www.google.com/maps/search/?api=1&query="+self.stopWd()
         print(base_url)

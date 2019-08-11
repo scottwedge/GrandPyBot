@@ -1,8 +1,14 @@
 const apply = document.querySelector('.btn');
+const myBox = document.getElementById('cchild1');
+const motherBox = document.getElementById('container');
 
-const waiting = () =>{
+
+const waitSigne = () => {
+    const waiting = document.querySelector(".wait");
+    waiting.style.display = 'none';
 
 };
+
 
 const getMediaResponse = () => {
    console.log('mediadata')
