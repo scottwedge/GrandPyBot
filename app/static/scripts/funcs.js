@@ -3,15 +3,15 @@ const myBox = document.getElementById('cchild1');
 const motherBox = document.getElementById('container');
 
 
-const waitSigne = () => {
-    const waiting = document.querySelector(".wait");
-    waiting.style.display = 'none';
-
-};
+// const waitSigne = (disp) => {
+//     const waiting = document.querySelector(".wait");
+//     $(waiting).hide();
+// };
 
 
 const getMediaResponse = () => {
-   console.log('mediadata')
+    const mediaResp = ' {{ response }} ';
+   console.log(mediaResp)
 };
 
 
@@ -20,4 +20,4 @@ const getMediaResponse = () => {
 const getMap =  ()=> {
     console.log('mapdata')
  
-}
+};

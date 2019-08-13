@@ -44,6 +44,7 @@ class Bot:
         for elt in response:
             if elt not in self.splitStp():
                 cleanWords.append(elt)
+        #print(' '.join(cleanWords))
         return(' '.join(cleanWords))
 
     def MediaWiki(self):
