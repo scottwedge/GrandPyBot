@@ -49,10 +49,15 @@ class Bot:
 
     def MediaWiki(self):
         """A Moethod to get a storie about the place from mediawiki
-         and a explnation if the response dont exist
+         and a random answer if the response was not well explained
+         or there is an error
         """
         
-
+        listAnswers = [
+            'Mon gamin repose ta question, si non cet endroit n\'a aucune histoire,',
+            'Désolé mon amis J\'ai peut etre pas compris ta question',
+            'Tu parle chinois? repose ta question plus propre svp >_>'
+        ]
         base_url = "http://fr.wikipedia.org/w/api.php"
         params_url = {"action": "opensearch",
                   "search": self.stopWd(),
@@ -64,19 +69,23 @@ class Bot:
         #print(self.ResultUrl.url)
         try:
             answer = self.ResultUrl.json()[2][0]
+            if answer == "" or answer == " ":
+                answer = "dans ma memoire cet endroit n\'a aucune histoire, cherche ailleur :D"
             return  answer
         except:
-            error = "Désolé mon amis J'ai peut etre pas compris ta question ou, l'endroit que tu chere na aucune histoire :'("
+            error = random.choice(listAnswers)
             return error
        
 
 
     def GooglMapFrame(self):
         """Geting the localisation on the map"""
+        adresse = self.stopWd()
+        adresse = adresse.replace(" ", "")
+
         
-        
-        base_url = "https://www.google.com/maps/search/?api=1&query="+self.stopWd()
-        print(base_url)
+        base_url = "https://www.google.com/maps/search/?api=1&query="+adresse
+        return base_url
         
          
         

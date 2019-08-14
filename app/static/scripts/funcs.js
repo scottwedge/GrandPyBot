@@ -1,7 +1,5 @@
-const apply = document.querySelector('.btn');
-const myBox = document.getElementById('cchild1');
-const motherBox = document.getElementById('container');
-
+const myBox = document.getElementById('cchild1');// select the div responsable of incubing the responses
+let mediaResp = "resul";
 
 // const waitSigne = (disp) => {
 //     const waiting = document.querySelector(".wait");
@@ -9,9 +7,24 @@ const motherBox = document.getElementById('container');
 // };
 
 
-const getMediaResponse = () => {
-    const mediaResp = ' {{ response }} ';
-   console.log(mediaResp)
+const addUserQuestion = question=>{
+    const respBox = document.createElement("div");// create a div of the user question
+    respBox.classList.add('userBox');// add class to style the responses
+
+    asking = 'Vous:'+' '+question;
+    respBox.innerHTML = asking;
+    myBox.append(asking);
+};
+
+
+const getMediaResponse = result => {
+    mediaResp = result;
+    const respBox = document.createElement("div");// create a div of the media response
+
+    respBox.classList.add('Box');// add class to style the responses
+    
+    respBox.innerHTML = mediaResp;
+    myBox.append(respBox)
 };
 
 
