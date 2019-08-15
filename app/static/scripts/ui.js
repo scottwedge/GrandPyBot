@@ -14,17 +14,17 @@ const questionVal = document.getElementById('searchbar');// select the input
                         const question = questionVal.value.trim();// trim over the input value
                         const waiting = document.querySelector(".wait");// select the waiting image of load
                         let mediaResp=""; // a variabl will get the value of the response ajax of media story
-                        let mapResp="";// a variabl will get the value of the response ajax of the map link 
+                        let mapLink="";// a variabl will get the value of the response ajax of the map link 
 
 
                         addUserQuestion(question);
-                        //first ajax Query to get the story
-                        const ajxMediaQuery = $.ajax({
+                        //first ajax Query to get the map 
+                        const ajxMapQuery = $.ajax({
                             type: "POST",
-                            url: '/', 
+                            url: '/map', 
                             data: JSON.stringify(question),
                             success: response => {
-                                 mediaResp = response;
+                                    mapLink = response;
                             },
                             dataType: "json",
                             contentType: 'application/json;charset=UTF-8',
@@ -38,20 +38,21 @@ const questionVal = document.getElementById('searchbar');// select the input
                                 $(waiting).css("display", "none");
                             },
                             });
-                            // The call back then of the mediawiki response
-                            ajxMediaQuery.then(
+
+                            // callback of the map
+                            ajxMapQuery.then(
                                 ()=>{
-                                getMediaResponse(mediaResp);
+                                    getMap(mapLink);
                                 }
-                                            );
-                        
-                            // The second Ajax request to get the map link
-                            const ajxMapQuery = $.ajax({
+                            );
+                            
+                            // The second Ajax request to get the story
+                            const ajxMediaQuery = $.ajax({
                                 type: "POST",
-                                url: '/map', 
+                                url: '/', 
                                 data: JSON.stringify(question),
                                 success: response => {
-                                        mapResp = response;
+                                     mediaResp = response;
                                 },
                                 dataType: "json",
                                 contentType: 'application/json;charset=UTF-8',
@@ -65,20 +66,14 @@ const questionVal = document.getElementById('searchbar');// select the input
                                     $(waiting).css("display", "none");
                                 },
                                 });
-
-                            // callback of the map
-                            ajxMapQuery.then(
-                                ()=>{
-                                    console.log(mapResp);
-                                }
-                            )
-
-
-
-
-
-
-                        // getMap();
+                                // The call back then of the mediawiki response
+                                    ajxMediaQuery.then(
+                                    ()=>{
+                                    getMediaResponse(mediaResp);
+                                    }
+                                            );
+                            
+                        
                     });
                                                         
                         
