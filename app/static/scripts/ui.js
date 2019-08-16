@@ -41,12 +41,13 @@ const questionVal = document.getElementById('searchbar');// select the input
 
                             // callback of the map
                             ajxMapQuery.then(
+
                                 ()=>{
                                     getMap(mapLink);
                                 }
-                            );
-                            
-                            // The second Ajax request to get the story
+                            ).then(
+                                ()=>{
+                                    // The second Ajax request to get the story
                             const ajxMediaQuery = $.ajax({
                                 type: "POST",
                                 url: '/', 
@@ -72,6 +73,10 @@ const questionVal = document.getElementById('searchbar');// select the input
                                     getMediaResponse(mediaResp);
                                     }
                                             );
+                                }
+                            );
+                            
+                            
                             
                         
                     });

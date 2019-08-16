@@ -35,11 +35,11 @@ const addUserQuestion = question=>{
 
 
 // function to get and add the map
-const getMap =  (urlSrc)=> {
+const getMap =  (Url)=> {
     const respBox = document.createElement("div");// create a div that will contain the map
-    
+    url = Url
     respBox.classList.add('Box');// add class to style the map covering all the div
-    respBox.innerHtml = "<iframe src=" + urlSrc +"></iframe>";
+    respBox.innerHTML = `<embed src=${url} height='300' width='800' allowfullscreen>`;
     myBox.append(respBox);
 
 };
