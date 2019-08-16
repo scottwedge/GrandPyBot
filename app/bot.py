@@ -80,7 +80,7 @@ class Bot:
     def GooglGeo(self):
         """Get the Geaoinformations about the user's task entred"""
         sendQts = self.stopWd()
-        apikey = 'AIzaSyCyMrpu32tZdwY1BTy36W4kWXV3Oana60Q'
+        apikey = ''
         base_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+sendQts+"&key="+apikey
         request = requests.get(base_url)
         jsRequest = request.json()
