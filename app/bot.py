@@ -77,28 +77,30 @@ class Bot:
             return error
        
 
-    def GooglGeo(self):
-        """Get the Geaoinformations about the user's task entred"""
-        sendQts = self.stopWd()
-        apikey = 'AIzaSyCyMrpu32tZdwY1BTy36W4kWXV3Oana60Q'
-        base_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+sendQts+"&key="+apikey
-        request = requests.get(base_url)
-        jsRequest = request.json()
-        target = jsRequest["results"]
-        for elt in target:
-            points = elt['geometry']['location']
-        self.latitude = points['lat']
-        self.longetude = points['lng']
+    # def GooglGeo(self):
+    #     """Get the Geaoinformations about the user's task entred"""
+    #     sendQts = self.stopWd()
+    #     apikey = 'AIzaSyBvcvLFY21zXRvE8IaLp6GOzlhIIGdlgGc'
+    #     base_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+sendQts+"&key="+apikey
+    #     print(base_url)
+    #     request = requests.get(base_url)
+    #     jsRequest = request.json()
+    #     target = jsRequest["results"]
+    #     for elt in target:
+    #         points = elt['geometry']['location']
+    #     self.latitude = points['lat']
+    #     self.longetude = points['lng']
 
 
-    def GooglMapFrame(self):
+    def GooglMaplink(self):
         """Geting the localisation on the map"""
-        self.GooglGeo()
+        #self.GooglGeo()
         adresse = self.stopWd()
         adresse = adresse.replace(" ", "")
+        apikey = 'AIzaSyBvcvLFY21zXRvE8IaLp6GOzlhIIGdlgGc'
         
-        base_url = "https://www.google.com/maps/search/?api=1&query="+str(self.latitude)+','+str(self.longetude)
-        #base_url = "https://www.google.com/maps/search/?api=1&query="+adresse+"&key="+apikey
+        #base_url = "https://www.google.com/maps/search/?api=1&query="+str(self.latitude)+','+str(self.longetude)
+        base_url = "https://www.google.com/maps/search/?api=1&query="+adresse+"&key="+apikey
         return base_url
         
          

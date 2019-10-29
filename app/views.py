@@ -27,7 +27,7 @@ def mapGoogle():
     if request.method == 'POST':
         question = request.json
         query = bot.Bot(question)
-        mapResponse =  query.GooglMapFrame()
+        mapResponse =  query.GooglMaplink()
         
         
         return jsonify(mapResponse) 
