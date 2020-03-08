@@ -1,40 +1,45 @@
-from flask import Flask,  render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from app import bot
 
 
 app = Flask(__name__)
 
 
-
-
-@app.route('/', methods = ["GET","POST"])
+@app.route("/", methods=["GET", "POST"])
 def mediaResult():
-
-    if request.method == 'POST':
+    """
+    Mediawiki Part
+    This view, is made to recieve data from the front end logic,
+    traite it with the methods in backend's logic with a final 
+    tamplates...
+    """
+    if request.method == "POST":
         question = request.json
         query = bot.Bot(question)
-        mediaResponse =  query.MediaWiki()
-        
-        
-        return jsonify(mediaResponse) 
+        mediaResponse = query.MediaWiki()
+
+        return mediaResponse
 
     else:
-        return render_template('index.html')
+        return render_template("index.html")
 
 
-@app.route('/map', methods=["GET","POST"])
+@app.route("/map", methods=["GET", "POST"])
 def mapGoogle():
-    if request.method == 'POST':
-        question = request.json
-        query = bot.Bot(question)
-        mapResponse =  query.GooglMaplink()
-        
-        
-        return jsonify(mapResponse) 
+    """
+    googlemap Part
+    This view, is made to recieve data from the front end logic,
+    traite it with the methods in backend's logic with a final 
+    tamplates containing the map...
+    """
+    if request.method == "POST":  # cheking request type
+        question = request.json  # recieve the question from the form in the FE
+        query = bot.Bot(question)  # sending the question to the back end
+        mapResponse = query.GooglMaplink()
+        return jsonify(mapResponse)  # jesonify the response from the server
 
     else:
-        return render_template('index.html')
-
+        return render_template("index.html")
 
 
 if __name__ == "__main__":

@@ -1,10 +1,9 @@
 const myBox = document.getElementById("cchild1"); // select the div responsable of incubing the responses
-let mediaResp = "result"; // varriable will take the string return of place'sstory
-
-// const waitSigne = (disp) => {
-//     const waiting = document.querySelector(".wait");
-//     $(waiting).hide();
-// };
+let mediaResp = "result"; // varriable will take the string return of place's story
+const waitSigne = disp => {
+  const waiting = document.querySelector(".wait");
+  $(waiting).hide();
+};
 
 // make a function to create the bot icon into all boxes of the bot's answers
 const profilBot = element => {
@@ -12,10 +11,9 @@ const profilBot = element => {
   img.src = "static/img/pybot.png";
   img.classList.add("pybotInBox");
 
-  //Make a try and catch for the img added
+  //Make a try and catch the img added
   try {
-    console.log(img);
-    element.appendChild(img);
+    element.appendChhild(img);
   } catch (error) {
     console.log(error);
   }
@@ -25,7 +23,7 @@ const profilBot = element => {
 const addUserQuestion = question => {
   const userRespBox = document.createElement("div"); // create a div of the user question
   userRespBox.classList.add("userBox"); // add class to style the responses
-  asking = `<p class="userVous">Vous</p>
+  asking = `<p class="userVous">Vous :  </p>
                     <p class="userQues">${question}</p>
                 `;
   userRespBox.innerHTML = asking;
@@ -36,8 +34,13 @@ const addUserQuestion = question => {
 const getMap = Url => {
   const respBox = document.createElement("div"); // create a div that will contain the map
   url = Url;
+  const frameMap = document.createElement('iframe');
+
+  console.log(url)
   respBox.classList.add("Box"); // add class to style the map covering all the div
-  respBox.innerHTML = `<embed src=${url} height='300' width='900' allowfullscreen>`;
+  frameMap.src = url;
+  frameMap.classList.add("framMap");
+  respBox.appendChild(frameMap);
   myBox.append(respBox);
 };
 
@@ -47,7 +50,8 @@ const getMediaResponse = result => {
   const respBox = document.createElement("div"); // create a div of the media response
 
   respBox.classList.add("Box"); // add class to style the responses
-  profilBot(respBox); // add the pybot img
+  // add the pybot img
+  profilBot(respBox);
   respBox.innerHTML = mediaResp;
   myBox.append(respBox);
 };
