@@ -51,7 +51,7 @@ class Bot:
     def geoCode(self):
         """Get the Geaoinformations about the user's task entred"""
         sendQts = self.stopWd()
-        apikey = ""
+        apikey = os.environ.get("API")
 
         base_url = (
             "https://maps.googleapis.com/maps/api/geocode/json?address="
@@ -73,9 +73,9 @@ class Bot:
     def GooglMaplink(self):
         """Geting the localisation on the map"""
         code = self.geoCode()
-        adresse = self.stopWd()
-        adresse = adresse.replace(" ", "")
-        apikey = ""
+        # adresse = self.stopWd()
+        # adresse = adresse.replace(" ", "")
+        apikey = os.environ.get("API")
         lat = code[0]
         longe = code[1]
 
