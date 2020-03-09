@@ -38,37 +38,36 @@ const eventPromise = new Promise(() => {
     ajxMapQuery
       .then(() => {
         getMap(mapLink);
+      }).then(() => {
+        // The second Ajax request to get the story
+        const ajxMediaQuery = $.ajax({
+          type: "POST",
+          url: "/",
+          data: JSON.stringify(question),
+          success: response => {
+            mediaResp = response;
+          },
+          dataType: "json",
+          contentType: "application/json;charset=UTF-8",
+          beforesend: () => {
+            console.log('before');
+
+            $(waiting).css("display", "block");
+          },
+          erro: error => {
+            console.log(error);
+          },
+          complete: () => {
+            console.log('before');
+
+            $(waiting).css("display", "none");
+          }
+        });
+        // The call back then of the mediawiki response
+        ajxMediaQuery.then(() => {
+          //profilBot();
+          getMediaResponse(mediaResp);
+        });
       });
-    // .then(() => {
-    //   // The second Ajax request to get the story
-    //   const ajxMediaQuery = $.ajax({
-    //     type: "POST",
-    //     url: "/",
-    //     data: JSON.stringify(question),
-    //     success: response => {
-    //       mediaResp = response;
-    //     },
-    //     dataType: "json",
-    //     contentType: "application/json;charset=UTF-8",
-    //     beforesend: () => {
-    //       console.log('before');
-
-    //       $(waiting).css("display", "block");
-    //     },
-    //     erro: error => {
-    //       console.log(error);
-    //     },
-    //     complete: () => {
-    //       console.log('before');
-
-    //       $(waiting).css("display", "none");
-    //     }
-    //   });
-    //   // The call back then of the mediawiki response
-    //   ajxMediaQuery.then(() => {
-    //     //profilBot();
-    //     getMediaResponse(mediaResp);
-    //   });
-    //});
   });
 });

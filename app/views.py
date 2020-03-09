@@ -16,9 +16,9 @@ def mediaResult():
     if request.method == "POST":
         question = request.json
         query = bot.Bot(question)
-        mediaResponse = query.MediaWiki()
+        mediaResponse = query.media_Wiki_Resp()
 
-        return mediaResponse
+        return jsonify(mediaResponse)
 
     else:
         return render_template("index.html")

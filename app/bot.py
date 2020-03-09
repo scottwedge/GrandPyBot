@@ -84,10 +84,10 @@ class Bot:
         )
         return base_url
 
-    def MediaWiki(self):
-        """A Moethod to get a storie about the place from mediawiki
-         and a random answer if the response was not well explained
-         or there is an error
+    def wiki_Code_Loc(self):
+        """
+        Method getting the whole localisation of the place based on geoInformationdelivred by
+        the geoCode method 
         """
         code = self.geoCode()
         lat = code[0]
@@ -106,4 +106,37 @@ class Bot:
         }
         response = requests.get(url, params=params)
 
-        return print(response)
+        if response.status_code == 200:
+            data = response.json()
+            return data
+        else:
+            data = {"query": {"geosearch": []}}
+            print("Error")
+
+        return data
+
+    def media_Wiki_Resp(self):
+        """A Moethod to get a storie about the place from mediawiki
+         and a random answer if the response was not well explained
+         or there is an error
+        """
+        data = self.wiki_Code_Loc()
+        page_id = data["query"]["geosearch"][0]["pageid"]
+        url = "https://fr.wikipedia.org/w/api.php"
+
+        params = {
+            "format": "json",  # format de la réponse
+            "action": "query",  # action à effectuer
+            "prop": "extracts|info",  # Choix des propriétés pour les pages requises
+            "inprop": "url",  # Fournit une URL complète, une URL de modification, et l’URL canonique de chaque page.
+            "exchars": 1200,  # Nombre de caractères à retourner
+            "explaintext": 1,  # Renvoyer du texte brut (éliminer les balises de markup)
+            "pageids": page_id,
+        }
+
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            data = response.json()
+            return data["query"]["pages"][str(page_id)]["extract"]
+        else:
+            return "Error"
