@@ -28,7 +28,7 @@ class Bot:
         try:
             with open("./app/stopwords.txt") as file:
                 data = file.read()
-                # listData = data.split()
+
             return data
         except:
             error = "Un erreur s'est produit"

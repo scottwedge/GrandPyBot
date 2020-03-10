@@ -1,6 +1,6 @@
 const form = document.querySelector("form"); // select the form
 const questionVal = document.getElementById("searchbar"); // select the input
-
+const container = document.getElementById("cchild1");
 const eventPromise = new Promise(() => {
   form.addEventListener("submit", e => {
     e.preventDefault();
@@ -67,6 +67,8 @@ const eventPromise = new Promise(() => {
         ajxMediaQuery.then(() => {
           //profilBot();
           getMediaResponse(mediaResp);
+          container.scrollTo(0, document.body.scrollHeight);
+
         });
       });
   });
