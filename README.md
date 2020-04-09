@@ -13,7 +13,7 @@ Still in production phase...
 ## Technologies Used
 	* Python3
 	* Flask
-	* Unitest and Mocks
+	* Unittest and Mocks
 	* Mediawiki APIs
 	* Geolocalisation APIs
 	* Heroku Deployement
